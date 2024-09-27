@@ -1,0 +1,11 @@
+.products-container {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (min-width: 768px) {
+	.products-container {
+		display: grid;
+		grid-template-columns: 15% 85%;
+	}
+}

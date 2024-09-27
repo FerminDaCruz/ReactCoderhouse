@@ -1,0 +1,55 @@
+/* Establecer el tamaño de fuente base en el elemento html */
+html {
+    font-size: 10px;
+}
+
+/* Reset básico de CSS */
+
+/* Eliminar el margen y el relleno predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Establecer una fuente base */
+body {
+    line-height: 1.6;
+}
+
+/* Asegurarse de que los encabezados tengan el mismo estilo en todos los navegadores */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+/* Eliminar subrayado de enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Asegurarse de que las listas tengan un estilo consistente */
+ul, ol {
+    list-style: none;
+}
+
+/* Asegurarse de que las tablas se comporten de manera consistente */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Eliminar el fondo de los elementos de formulario */
+input, textarea, select, button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font: inherit;
+}
+
+/* Asegurarse de que las imágenes sean responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}

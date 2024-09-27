@@ -1,0 +1,18 @@
+@use "../../styles/base/variables" as v;
+
+.input-search-container {
+	display: flex;
+	align-items: center;
+	.input-search {
+		padding: 0.5rem 1rem;
+		border-radius: 9999px;
+		border: 1px solid v.$color-light-gray;
+		outline: none;
+		margin-right: 1rem;
+		font-size: 18px;
+		&::placeholder {
+			margin-left: 0.5rem;
+			color: v.$color-light-gray2;
+		}
+	}
+}

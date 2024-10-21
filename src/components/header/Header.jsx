@@ -1,9 +1,18 @@
+import { useContext } from "react";
 import SearchIcon from "../searchIcon/SearchIcon";
 import "./Header.scss";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 export default function Header() {
+	const { cartState } = useContext(CartContext);
+
+	const totalItems = cartState.reduce(
+		(acc, item) => acc + item.quantityItem,
+		0
+	);
+
 	return (
 		<header className="header">
 			<Link to="/">
@@ -27,6 +36,7 @@ export default function Header() {
 				</div>
 				<div className="header__icon ">
 					<ShoppingCart size={28} />
+					{totalItems}
 				</div>
 			</div>
 		</header>

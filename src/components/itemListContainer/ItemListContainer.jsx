@@ -1,10 +1,11 @@
+import StarRating from "../starRating/StarRating";
 import "./ItemListContainer.scss";
 import { Link } from "react-router-dom";
 
-export default function ItemListContainer({ products }) {
+export default function ItemListContainer({ products, itemsToShow = 30 }) {
 	return (
 		<div className="item-list-products-container">
-			{products.map((item) => (
+			{products.slice(0, itemsToShow).map((item) => (
 				<div key={item.id} className="product-card">
 					<Link to={`/item/${item.id}`}>
 						<img src={item.thumbnail} className="product-image" />
@@ -23,7 +24,6 @@ export default function ItemListContainer({ products }) {
 						<Link to={`/item/${item.id}`}>
 							<button className="buy-button">Comprar</button>
 						</Link>
-						<p className="product-rating">⭐ {item.rating}</p>
 					</div>
 				</div>
 			))}

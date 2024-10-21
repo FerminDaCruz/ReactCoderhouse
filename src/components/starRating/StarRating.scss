@@ -1,0 +1,30 @@
+.star-rating {
+	display: inline-block;
+	position: relative;
+	font-size: 40px;
+
+	.stars-outer {
+		display: inline-block;
+		position: relative;
+		font-family: "Arial", sans-serif;
+		color: #ccc; // Color de las estrellas vacías
+		white-space: nowrap;
+
+		&::before {
+			content: "★★★★★"; // 5 estrellas vacías
+		}
+	}
+
+	.stars-inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		color: gold; // Color de las estrellas llenas
+
+		&::before {
+			content: "★★★★★"; // 5 estrellas llenas
+		}
+	}
+}

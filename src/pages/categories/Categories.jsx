@@ -4,7 +4,7 @@ import ItemListContainer from "../../components/itemListContainer/ItemListContai
 import { useItems } from "../../hooks";
 
 export default function Products() {
-	const { productsData, loading } = useItems();
+	const { productsData, loading } = useItems("products");
 	const { categoryName } = useParams();
 	const filteredProducts = productsData.filter(
 		(p) => p.category === categoryName

@@ -1,5 +1,9 @@
 @use "./variables" as v;
 
+html {
+	overflow-y: scroll;
+}
+
 body {
 	background-color: v.$color-background;
 	font-family: v.$font-family;

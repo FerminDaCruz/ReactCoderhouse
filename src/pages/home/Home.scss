@@ -1,14 +1,136 @@
-.loading-spinner {
-	border: 4px solid rgba(0, 0, 0, 0.1); /* Borde suave */
-	border-left-color: #3b82f6; /* Color del círculo */
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-	animation: spin 1s linear infinite;
+.home-container {
+	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-@keyframes spin {
-	to {
-		transform: rotate(360deg);
+.hero-section {
+	width: 100%;
+	height: 60rem;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+	&__hero {
+		color: white;
+		font-size: 7rem;
+		font-weight: bold;
+		letter-spacing: -0.025em;
+		transition: transform 0.5s ease;
+		margin: 0 auto;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+	&__text {
+		color: white;
+		font-size: 2rem;
+		font-weight: bold;
+		transition: transform 0.5s ease;
+		margin: 0 auto;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+	&__button {
+		background-color: white;
+		margin: 2rem auto 0;
+		padding: 1rem 1.5rem;
+		border-radius: 10px;
+		font-size: 1.5rem;
+		font-weight: bold;
+		cursor: pointer;
+		transition: transform 0.5s ease;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
+
+.featured-products-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 10rem;
+	padding-bottom: 10rem;
+	&__title {
+		font-size: 4rem;
+		font-weight: bold;
+		letter-spacing: -0.025em;
+		transition: transform 0.5s ease;
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+	&__products {
+		margin: 0 auto;
+	}
+}
+.popular-categories-section {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 10rem;
+	padding-bottom: 15rem;
+
+	&__title {
+		font-size: 4rem;
+		font-weight: bold;
+		letter-spacing: -0.025em;
+		transition: transform 0.5s ease;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&__categories-container {
+		margin-top: 5rem;
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+	&__category {
+		background-color: #333;
+		margin: 1rem;
+		border-radius: 10px;
+		color: white;
+		font-weight: bold;
+		font-size: 1.6rem;
+		transition: transform 0.5s ease;
+		width: 20rem;
+		height: 15rem;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+
+		@media (min-width: 1024px) {
+			font-size: 2.4rem;
+			width: 25rem;
+		}
+
+		@media (min-width: 768px) {
+			font-size: 2rem;
+		}
+
+		@media (min-width: 480px) {
+			font-size: 1.8rem;
+		}
 	}
 }

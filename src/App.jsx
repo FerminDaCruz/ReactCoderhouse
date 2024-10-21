@@ -5,29 +5,32 @@ import Products from "./pages/products/Products";
 import Categories from "./pages/categories/Categories";
 import NotFound from "./pages/notFound/NotFound";
 import ItemDetail from "./pages/itemDetail/ItemDetail";
+import { CartProvider } from "./context/CartContext";
 
 export default function App() {
 	return (
-		<Router>
-			<Header />
+		<CartProvider>
+			<Router>
+				<Header />
 
-			<Routes>
-				<Route path="/" element={<Products />} />
+				<Routes>
+					<Route path="/" element={<Home />} />
 
-				<Route path="/home" element={<Home />} />
+					<Route path="/home" element={<Home />} />
 
-				<Route path="/products" element={<Products />} />
+					<Route path="/products" element={<Products />} />
 
-				{/* <Route path="/cart" element={<Cart />} /> */}
+					{/* <Route path="/cart" element={<Cart />} /> */}
 
-				<Route path="/categories/:categoryName" element={<Categories />} />
+					<Route path="/categories/:categoryName" element={<Categories />} />
 
-				<Route path="/item/:id" element={<ItemDetail />} />
+					<Route path="/item/:id" element={<ItemDetail />} />
 
-				{/* <Route path="/images/:itemId" element={<Images />} /> */}
+					{/* <Route path="/images/:itemId" element={<Images />} /> */}
 
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-		</Router>
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+			</Router>
+		</CartProvider>
 	);
 }

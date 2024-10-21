@@ -4,7 +4,7 @@ import { useItems } from "../../hooks";
 import "./Products.scss";
 
 export default function Products() {
-	const { productsData, loading } = useItems();
+	const { productsData, loading } = useItems("products");
 	return loading ? (
 		<div>cargando productos...</div>
 	) : (

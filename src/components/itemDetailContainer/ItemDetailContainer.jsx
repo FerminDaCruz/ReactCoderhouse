@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "./ItemDetailContainer.scss";
 import { Star, ShoppingCart, CreditCard } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css";
+import StarRating from "../starRating/StarRating";
+import { CartContext } from "../../context/CartContext";
+import CarritoModal from "../carritoModal/CarritoModal";
 
 export default function ItemDetailContainer({ item }) {
+	const { cartState, addItem, removeItem } = useContext(CartContext);
+
 	const [activeTab, setActiveTab] = useState("description");
 
-	const handleTabContent = () => {};
-
-	const [cantidad, setCantidad] = useState(1);
+	const [quantity, setQuantity] = useState(0);
 
 	// Función para aumentar el contador
-	const aumentarContador = () => {
-		if (cantidad < item.stock) {
-			setCantidad(cantidad + 1);
-		} else if (cantidad === item.stock) {
+	const handleAddItem = () => {
+		if (quantity < item.stock) {
+			const newQuantity = quantity + 1;
+			setQuantity(newQuantity);
+			addItem(item, newQuantity);
+		} else if (quantity === item.stock) {
 			toast.error("No hay más stock disponible", {
 				position: "top-right",
 				autoClose: 3000,
@@ -29,14 +34,16 @@ export default function ItemDetailContainer({ item }) {
 	};
 
 	// Función para descontar el contador
-	const descontarContador = () => {
-		if (cantidad > 1) {
-			setCantidad(cantidad - 1);
+	const handleRemoveItem = () => {
+		if (quantity > 0) {
+			setQuantity(quantity - 1);
+			removeItem(item);
 		}
 	};
 
 	return (
 		<div className="item-detail">
+			{console.log(cartState)}
 			{/* ToastContainer para mostrar los mensajes de Toastify */}
 			<ToastContainer />
 
@@ -48,25 +55,24 @@ export default function ItemDetailContainer({ item }) {
 				/>
 				<div className="item-detail__info">
 					<div className="item-detail__rating">
-						<Star />
-						<p className="item-detail__rating-number">{item.rating}</p>
+						<StarRating rating={item.rating} />
 					</div>
 
 					<h3 className="item-detail__title">{item.title}</h3>
 					<p className="item-detail__price">${item.price}</p>
 					<div className="item-detail__quantity">
-						<p className="item-detail__quantity-text">Quantity</p>
+						<p className="item-detail__quantity-text">Cantidad</p>
 						<div className="item-detail__quantity-buttons">
 							<button
 								className="item-detail__quantity-button"
-								onClick={descontarContador}
+								onClick={handleRemoveItem}
 							>
 								-
 							</button>
-							<p className="item-detail__quantity-counter">{cantidad}</p>
+							<p className="item-detail__quantity-counter">{quantity}</p>
 							<button
 								className="item-detail__quantity-button"
-								onClick={aumentarContador}
+								onClick={handleAddItem}
 							>
 								+
 							</button>
@@ -77,10 +83,7 @@ export default function ItemDetailContainer({ item }) {
 							<ShoppingCart />
 							Agregar al carrito
 						</button>
-						<button className="item-detail__buy-button">
-							<CreditCard />
-							Comprar
-						</button>
+						<CarritoModal />
 					</div>
 				</div>
 			</div>
